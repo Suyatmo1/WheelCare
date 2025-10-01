@@ -7,7 +7,12 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
     label { display: block; margin-top: 10px; }
-    select, input, button { padding: 8px; margin-top: 5px; width: 100%; }
+    select, input, button, textarea { 
+      padding: 8px; 
+      margin-top: 5px; 
+      width: 100%; 
+      box-sizing: border-box;
+    }
     button { background: green; color: white; border: none; cursor: pointer; font-weight: bold; }
     button:hover { background: darkgreen; }
   </style>
@@ -27,6 +32,12 @@
   <label>Mekanik:</label>
   <input type="text" id="mekanik" placeholder="Nama mekanik">
 
+  <label>Tyre Condition:</label>
+  <input type="text" id="tyre" placeholder="Contoh: Good">
+
+  <label>Deviation:</label>
+  <textarea id="deviation" rows="4" placeholder="Tulis deviation di sini..."></textarea>
+
   <label>Pilih Tujuan Kirim:</label>
   <select id="tujuan">
     <option value="6281234567890">Supervisor</option>
@@ -43,6 +54,8 @@
       let date = document.getElementById("date").value;
       let hourMeter = document.getElementById("hourMeter").value;
       let mekanik = document.getElementById("mekanik").value;
+      let tyre = document.getElementById("tyre").value;
+      let deviation = document.getElementById("deviation").value;
       let tujuan = document.getElementById("tujuan").value;
 
       let pesan = 
@@ -85,13 +98,10 @@ RL : 2.10 MPa
 RR : 2.10 MPa
 
 *Tyre condition :*
-Tyre Condition : Good
+Tyre Condition : ${tyre}
 
 *Deviation :*
-⚠ sun visor Rh damage
-⚠ rear plate Rh crack
-⚠ spacer cover ALT lost
-⚠ hose output hyd pump crack`;
+${deviation}`;
 
       let url = "https://wa.me/" + tujuan + "?text=" + encodeURIComponent(pesan);
       window.open(url, "_blank");
