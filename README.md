@@ -1,5 +1,5 @@
 # WheelCare
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,7 +14,15 @@
     button:hover { background: darkgreen; }
     fieldset { margin-top: 15px; padding: 10px; border: 1px solid #ccc; }
     legend { font-weight: bold; }
-    #preview { white-space: pre-wrap; background: #f4f4f4; padding: 10px; border-radius: 5px; margin-top: 20px; font-family: monospace; }
+    #preview { 
+      white-space: pre-wrap; 
+      background: #1c1c1c; 
+      color: #e6e6e6; 
+      padding: 15px; 
+      border-radius: 10px; 
+      margin-top: 20px; 
+      font-family: monospace;
+    }
   </style>
 </head>
 <body>
@@ -95,11 +103,11 @@
       pesan =
 `*QA-1 Pre Inspection*
 
-Tgl : ${date}
-Mekanik : ${mekanik}
+📅 Tgl : ${date}
+👷 Mekanik : ${mekanik}
 
-🚗CN : ${codeNumber}
-⌛HM : ${hourMeter}
+🚗 CN : ${codeNumber}
+⌛ HM : ${hourMeter}
 
 🩸 *Oil Level* 🩸
 Engine oil level : ${engineOil}
@@ -112,13 +120,17 @@ Engine oil leakage : ${oilLeak}
 Common Rail Connector : ${crc}
 Injector Tube : ${injector}
 
-*Tyre condition :*
-${tyre}
+*Tyre condition :* ${tyre}
 
 *Deviation :*
 ${deviation}`;
 
       document.getElementById("preview").innerText = pesan;
+
+      // Auto copy ke clipboard
+      navigator.clipboard.writeText(pesan).then(() => {
+        alert("✅ Teks laporan sudah di-copy ke clipboard!");
+      });
     }
 
     function sendReport() {
