@@ -1,17 +1,17 @@
 # WheelCare
-Button btnSendWA = findViewById(R.id.btnSendWA);
-
 btnSendWA.setOnClickListener(v -> {
-    // ambil data dari inputan form
+    // Ambil data dari form
     String codeNumber = edtCodeNumber.getText().toString();
     String date = edtDate.getText().toString();
     String hourMeter = edtHourMeter.getText().toString();
+    String tyreCondition = edtTyre.getText().toString();
+    String deviation = edtDeviation.getText().toString();
+    String pic = edtPIC.getText().toString();
 
-    // format pesan sesuai template
+    // Format pesan laporan
     String pesan = "*QA-1 Pre Inspection*\n\n" +
             "Tgl : " + date + "\n\n" +
-            "*Mekanik :*\n" +
-            "a.aziz.h, rico\n\n" +
+            "*Mekanik :*\n" + pic + "\n\n" +
             "🚗CN : " + codeNumber + "\n" +
             "⌛HM : " + hourMeter + "\n\n" +
             "🩸 *Oil Level* 🩸\n" +
@@ -23,30 +23,27 @@ btnSendWA.setOnClickListener(v -> {
             "Engine oil leakage : ✅\n" +
             "Common Rail Connector : ✅\n" +
             "Injector Tube : ✅\n\n" +
-            "🚗 *Cabin Area*🚗\n" +
+            "🚗 *Cabin Area* 🚗\n" +
             "📸FM Radio : ✅\n" +
             "⛔Fatigue Warning : ✅\n" +
-            "⚡Power Supply : 27.7 V\n" +
+            "⚡Power Supply : 25.7 V\n" +
             "💧Common Rail Pressure (ON) : 0 MPa\n" +
             "🎚Power Window : ✅\n\n" +
             "🚗 *Frame Area* 🚗\n" +
             "Operator seat : ✅\n" +
             "Hand Rail : ✅\n\n" +
             "💧 *Pressure Suspension (Panel)* 💧\n" +
-            "FL : 4.10 MPa\n" +
-            "FR : 4.10 MPa\n" +
-            "RL : 2.10 MPa\n" +
-            "RR : 2.10 MPa\n\n" +
+            "FL : 3.80 MPa\n" +
+            "FR : 3.50 MPa\n" +
+            "RL : 1.90 MPa\n" +
+            "RR : 2.09 MPa\n\n" +
             "*Tyre condition :*\n" +
-            "Tyre : Tyre Condition : Good\n\n" +
+            "Tyre : " + tyreCondition + "\n\n" +
             "*Deviation :*\n" +
-            "⚠ sun visor Rh damage\n" +
-            "⚠ rear plate Rh crack\n" +
-            "⚠ spacer cover ALT lost\n" +
-            "⚠ hose output hyd pump crack\n";
+            deviation + "\n";
 
-    // nomor tujuan WhatsApp
-    String nomorTujuan = "6281234567890"; // ganti dengan nomor WA tujuan
+    // Nomor WA tujuan (ganti dengan grup/nomor tujuan)
+    String nomorTujuan = "6281234567890";
 
     try {
         Uri uri = Uri.parse("https://wa.me/" + nomorTujuan + "?text=" + Uri.encode(pesan));
