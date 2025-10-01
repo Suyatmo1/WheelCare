@@ -7,36 +7,58 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
     label { display: block; margin-top: 10px; }
-    select, input, button, textarea { 
-      padding: 8px; 
-      margin-top: 5px; 
-      width: 100%; 
-      box-sizing: border-box;
+    select, input, button, textarea {
+      padding: 8px; margin-top: 5px; width: 100%; box-sizing: border-box;
     }
-    button { background: green; color: white; border: none; cursor: pointer; font-weight: bold; }
+    button { background: green; color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 20px; padding: 10px; border-radius: 5px; }
     button:hover { background: darkgreen; }
+    fieldset { margin-top: 15px; padding: 10px; border: 1px solid #ccc; }
+    legend { font-weight: bold; }
+    #preview { white-space: pre-wrap; background: #f4f4f4; padding: 10px; border-radius: 5px; margin-top: 20px; font-family: monospace; }
   </style>
 </head>
 <body>
   <h2>Inspection Report HD</h2>
 
   <label>Code Number:</label>
-  <input type="text" id="codeNumber" placeholder="Masukkan Code Number">
+  <input type="text" id="codeNumber">
 
   <label>Date:</label>
   <input type="date" id="date">
 
   <label>Hourmeter:</label>
-  <input type="text" id="hourMeter" placeholder="Masukkan HM">
+  <input type="text" id="hourMeter">
 
   <label>Mekanik:</label>
-  <input type="text" id="mekanik" placeholder="Nama mekanik">
+  <input type="text" id="mekanik">
+
+  <fieldset>
+    <legend>🩸 Oil Level</legend>
+    Engine oil level:
+    <select id="engineOil"><option>✅</option><option>❌</option></select><br>
+    Transmission oil level:
+    <select id="transOil"><option>✅</option><option>❌</option></select><br>
+    Hydraulic oil level:
+    <select id="hydOil"><option>✅</option><option>❌</option></select>
+  </fieldset>
+
+  <fieldset>
+    <legend>⚙ Engine Area</legend>
+    Belt tension:
+    <select id="beltTension"><option>✅</option><option>❌</option></select><br>
+    Engine oil leakage:
+    <select id="oilLeak"><option>✅</option><option>❌</option></select><br>
+    Common Rail Connector:
+    <select id="crc"><option>✅</option><option>❌</option></select><br>
+    Injector Tube:
+    <select id="injector"><option>✅</option><option>❌</option></select>
+  </fieldset>
 
   <label>Tyre Condition:</label>
-  <input type="text" id="tyre" placeholder="Contoh: Good">
+  <input type="text" id="tyre">
 
   <label>Deviation:</label>
-  <textarea id="deviation" rows="4" placeholder="Tulis deviation di sini..."></textarea>
+  <textarea id="deviation" rows="3"></textarea>
 
   <label>Pilih Tujuan Kirim:</label>
   <select id="tujuan">
@@ -45,64 +67,66 @@
     <option value="6281122334455">Personal Lain</option>
   </select>
 
-  <br><br>
+  <button onclick="previewReport()">PREVIEW</button>
+
+  <h3>📋 Preview Report:</h3>
+  <div id="preview">Belum ada data...</div>
+
   <button onclick="sendReport()">SEND TO WHATSAPP</button>
 
   <script>
-    function sendReport() {
+    let pesan = "";
+    function previewReport() {
       let codeNumber = document.getElementById("codeNumber").value;
       let date = document.getElementById("date").value;
       let hourMeter = document.getElementById("hourMeter").value;
       let mekanik = document.getElementById("mekanik").value;
       let tyre = document.getElementById("tyre").value;
       let deviation = document.getElementById("deviation").value;
-      let tujuan = document.getElementById("tujuan").value;
 
-      let pesan = 
+      let engineOil = document.getElementById("engineOil").value;
+      let transOil = document.getElementById("transOil").value;
+      let hydOil = document.getElementById("hydOil").value;
+      let beltTension = document.getElementById("beltTension").value;
+      let oilLeak = document.getElementById("oilLeak").value;
+      let crc = document.getElementById("crc").value;
+      let injector = document.getElementById("injector").value;
+
+      pesan =
 `*QA-1 Pre Inspection*
 
 Tgl : ${date}
-
-*Mekanik :*
-${mekanik}
+Mekanik : ${mekanik}
 
 🚗CN : ${codeNumber}
 ⌛HM : ${hourMeter}
 
 🩸 *Oil Level* 🩸
-Engine oil level : ✅
-Transmission oil level : ✅
-Hydraulic oil level : ✅
+Engine oil level : ${engineOil}
+Transmission oil level : ${transOil}
+Hydraulic oil level : ${hydOil}
 
 ⚙ *Engine Area* ⚙
-Belt tension : ✅
-Engine oil leakage : ✅
-Common Rail Connector : ✅
-Injector Tube : ✅
-
-🚗 *Cabin Area* 🚗
-📸FM Radio : ✅
-⛔Fatigue Warning : ✅
-⚡Power Supply : 27.7 V
-💧Common Rail Pressure (ON) : 0 MPa
-🎚Power Window : ✅
-
-🚗 *Frame Area* 🚗
-Operator seat : ✅
-Hand Rail : ✅
-
-💧 *Pressure Suspension (Panel)* 💧
-FL : 4.10 MPa
-FR : 4.10 MPa
-RL : 2.10 MPa
-RR : 2.10 MPa
+Belt tension : ${beltTension}
+Engine oil leakage : ${oilLeak}
+Common Rail Connector : ${crc}
+Injector Tube : ${injector}
 
 *Tyre condition :*
-Tyre Condition : ${tyre}
+${tyre}
 
 *Deviation :*
 ${deviation}`;
 
+      document.getElementById("preview").innerText = pesan;
+    }
+
+    function sendReport() {
+      let tujuan = document.getElementById("tujuan").value;
+      if (!pesan) {
+        alert("Klik PREVIEW dulu sebelum kirim WA!");
+        return;
+      }
       let url = "https://wa.me/" + tujuan + "?text=" + encodeURIComponent(pesan);
       window.open(url, "_blank");
     }
