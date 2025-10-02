@@ -1,5 +1,5 @@
 # WheelCare
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,10 +10,16 @@
     select, input, button, textarea {
       padding: 8px; margin-top: 5px; width: 100%; box-sizing: border-box;
     }
-    button { background: green; color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 20px; padding: 10px; border-radius: 5px; }
-    button:hover { background: darkgreen; }
-    fieldset { margin-top: 15px; padding: 10px; border: 1px solid #ccc; }
-    legend { font-weight: bold; }
+    button { 
+      margin-top: 15px; 
+      padding: 10px; 
+      border-radius: 5px; 
+      border: none; 
+      font-weight: bold; 
+      cursor: pointer; 
+    }
+    .wa { background: green; color: white; }
+    .copy { background: #444; color: white; }
     #preview { 
       white-space: pre-wrap; 
       background: #1c1c1c; 
@@ -40,28 +46,6 @@
   <label>Mekanik:</label>
   <input type="text" id="mekanik">
 
-  <fieldset>
-    <legend>🩸 Oil Level</legend>
-    Engine oil level:
-    <select id="engineOil"><option>✅</option><option>❌</option></select><br>
-    Transmission oil level:
-    <select id="transOil"><option>✅</option><option>❌</option></select><br>
-    Hydraulic oil level:
-    <select id="hydOil"><option>✅</option><option>❌</option></select>
-  </fieldset>
-
-  <fieldset>
-    <legend>⚙ Engine Area</legend>
-    Belt tension:
-    <select id="beltTension"><option>✅</option><option>❌</option></select><br>
-    Engine oil leakage:
-    <select id="oilLeak"><option>✅</option><option>❌</option></select><br>
-    Common Rail Connector:
-    <select id="crc"><option>✅</option><option>❌</option></select><br>
-    Injector Tube:
-    <select id="injector"><option>✅</option><option>❌</option></select>
-  </fieldset>
-
   <label>Tyre Condition:</label>
   <input type="text" id="tyre">
 
@@ -80,7 +64,8 @@
   <h3>📋 Preview Report:</h3>
   <div id="preview">Belum ada data...</div>
 
-  <button onclick="sendReport()">SEND TO WHATSAPP</button>
+  <button class="wa" onclick="sendReport()">KIRIM KE WA</button>
+  <button class="copy" onclick="copyReport()">SALIN PESAN</button>
 
   <script>
     let pesan = "";
@@ -92,14 +77,6 @@
       let tyre = document.getElementById("tyre").value;
       let deviation = document.getElementById("deviation").value;
 
-      let engineOil = document.getElementById("engineOil").value;
-      let transOil = document.getElementById("transOil").value;
-      let hydOil = document.getElementById("hydOil").value;
-      let beltTension = document.getElementById("beltTension").value;
-      let oilLeak = document.getElementById("oilLeak").value;
-      let crc = document.getElementById("crc").value;
-      let injector = document.getElementById("injector").value;
-
       pesan =
 `*QA-1 Pre Inspection*
 
@@ -110,15 +87,15 @@
 ⌛ HM : ${hourMeter}
 
 🩸 *Oil Level* 🩸
-Engine oil level : ${engineOil}
-Transmission oil level : ${transOil}
-Hydraulic oil level : ${hydOil}
+Engine oil level : ✅
+Transmission oil level : ✅
+Hydraulic oil level : ✅
 
 ⚙ *Engine Area* ⚙
-Belt tension : ${beltTension}
-Engine oil leakage : ${oilLeak}
-Common Rail Connector : ${crc}
-Injector Tube : ${injector}
+Belt tension : ✅
+Engine oil leakage : ✅
+Common Rail Connector : ✅
+Injector Tube : ✅
 
 *Tyre condition :* ${tyre}
 
@@ -126,11 +103,6 @@ Injector Tube : ${injector}
 ${deviation}`;
 
       document.getElementById("preview").innerText = pesan;
-
-      // Auto copy ke clipboard
-      navigator.clipboard.writeText(pesan).then(() => {
-        alert("✅ Teks laporan sudah di-copy ke clipboard!");
-      });
     }
 
     function sendReport() {
@@ -141,6 +113,16 @@ ${deviation}`;
       }
       let url = "https://wa.me/" + tujuan + "?text=" + encodeURIComponent(pesan);
       window.open(url, "_blank");
+    }
+
+    function copyReport() {
+      if (!pesan) {
+        alert("Klik PREVIEW dulu untuk generate pesan!");
+        return;
+      }
+      navigator.clipboard.writeText(pesan).then(() => {
+        alert("✅ Pesan sudah disalin, tinggal paste ke WhatsApp!");
+      });
     }
   </script>
 </body>
