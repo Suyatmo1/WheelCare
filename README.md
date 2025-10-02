@@ -29,6 +29,7 @@
       margin-top: 20px; 
       font-family: monospace;
     }
+    .actions { margin-top: 20px; display: flex; gap: 10px; }
   </style>
 </head>
 <body>
@@ -64,8 +65,10 @@
   <h3>📋 Preview Report:</h3>
   <div id="preview">Belum ada data...</div>
 
-  <button class="wa" onclick="sendReport()">KIRIM KE WA</button>
-  <button class="copy" onclick="copyReport()">SALIN PESAN</button>
+  <div class="actions">
+    <button class="wa" onclick="sendReport()">📲 Send to WhatsApp</button>
+    <button class="copy" onclick="copyReport()">📋 Copy to Clipboard</button>
+  </div>
 
   <script>
     let pesan = "";
