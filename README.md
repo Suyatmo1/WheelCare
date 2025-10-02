@@ -92,6 +92,7 @@
     </div>
   </div>
 
+
   <!-- Frame Area -->
   <div class="section">
     <label>🚗 Frame Area</label>
@@ -121,6 +122,27 @@
   <div class="actions">
     <button onclick="previewReport()">🔍 PREVIEW</button>
   </div>
+
+      <!-- Validasi dan kelengkapan Check list Service-->
+  <div class="section">
+    <label>  Validasi dan kelengkapan Check list Service </label>
+    <div class="item"> Job Card & Cover Check List:
+      <select id="cab_radio" class="opt"><option>✅</option><option>❌</option></select>
+    </div>
+    <div class="item">Fatigue Warning:
+      <select id="cab_fatigue" class="opt"><option>✅</option><option>❌</option></select>
+    </div>
+    <div class="item">Power Supply:
+      <input type="text" id="cab_power" placeholder="contoh: 25.7 V" class="opt">
+    </div>
+    <div class="item">Common Rail Pressure (ON):
+      <input type="text" id="cab_crpress" placeholder="contoh: 0 MPa" class="opt">
+    </div>
+    <div class="item">Power Window:
+      <select id="cab_window" class="opt"><option>✅</option><option>❌</option></select>
+    </div>
+  </div>
+
 
   <h3>📋 Preview Report:</h3>
   <div id="preview">Belum ada data...</div>
