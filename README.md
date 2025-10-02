@@ -119,11 +119,8 @@
   <label>Deviation:</label>
   <textarea id="deviation" rows="3"></textarea>
 
-  <div class="actions">
-    <button onclick="previewReport()">🔍 PREVIEW</button>
-  </div>
-
-      <!-- Validasi dan kelengkapan Check list Service-->
+  <div class="actions"
+   <!-- Validasi dan kelengkapan Check list Service-->
   <div class="section">
     <label>  Validasi dan kelengkapan Check list Service </label>
     <div class="item"> Job Card & Cover Check List:
@@ -142,7 +139,11 @@
       <select id="cab_window" class="opt"><option>✅</option><option>❌</option></select>
     </div>
   </div>
+   
+    <button onclick="previewReport()">🔍 PREVIEW</button>
+  </div>
 
+    
 
   <h3>📋 Preview Report:</h3>
   <div id="preview">Belum ada data...</div>
