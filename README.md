@@ -41,6 +41,27 @@
   <label>Mekanik:</label>
   <input type="text" id="mekanik">
 
+<!-- Cabin Area -->
+  <div class="section">
+    <label>🚗 Cabin Area</label>
+    <div class="item">FM Radio:
+      <select id="cab_radio" class="opt"><option>✅</option><option>❌</option></select>
+    </div>
+    <div class="item">Fatigue Warning:
+      <select id="cab_fatigue" class="opt"><option>✅</option><option>❌</option></select>
+    </div>
+    <div class="item">Power Supply:
+      <input type="text" id="cab_power" placeholder="contoh: 25.7 V" class="opt">
+    </div>
+    <div class="item">Common Rail Pressure (ON):
+      <input type="text" id="cab_crpress" placeholder="contoh: 0 MPa" class="opt">
+    </div>
+    <div class="item">Power Window:
+      <select id="cab_window" class="opt"><option>✅</option><option>❌</option></select>
+    </div>
+  </div>
+  
+
   <!-- Oil Level -->
   <div class="section">
     <label>🩸 Oil Level</label>
