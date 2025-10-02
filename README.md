@@ -41,26 +41,6 @@
   <label>Mekanik:</label>
   <input type="text" id="mekanik">
 
-<!-- Cabin Area -->
-  <div class="section">
-    <label>🚗 Cabin Area</label>
-    <div class="item">FM Radio:
-      <select id="cab_radio" class="opt"><option>✅</option><option>❌</option></select>
-    </div>
-    <div class="item">Fatigue Warning:
-      <select id="cab_fatigue" class="opt"><option>✅</option><option>❌</option></select>
-    </div>
-    <div class="item">Power Supply:
-      <input type="text" id="cab_power" placeholder="contoh: 25.7 V" class="opt">
-    </div>
-    <div class="item">Common Rail Pressure (ON):
-      <input type="text" id="cab_crpress" placeholder="contoh: 0 MPa" class="opt">
-    </div>
-    <div class="item">Power Window:
-      <select id="cab_window" class="opt"><option>✅</option><option>❌</option></select>
-    </div>
-  </div>
-  
 
   <!-- Oil Level -->
   <div class="section">
@@ -209,6 +189,14 @@
       let sus_rl = document.getElementById("sus_rl").value;
       let sus_rr = document.getElementById("sus_rr").value;
 
+      // Validasi & Kelengkapan Checklist Service
+      let val_JobcarddanCover= document.getElementById("val_Jobcar & Cover Checklist").value;
+      let cab_fatigue = document.getElementById("cab_fatigue").value;
+      let cab_power = document.getElementById("cab_power").value;
+      let cab_crpress = document.getElementById("cab_crpress").value;
+      let cab_window = document.getElementById("cab_window").value;
+
+
       let tyre = document.getElementById("tyre").value;
       let deviation = document.getElementById("deviation").value;
 
@@ -248,6 +236,14 @@ FL : ${sus_fl}
 FR : ${sus_fr}
 RL : ${sus_rl}
 RR : ${sus_rr}
+
+🚗 *Validasi & Kelengkapan Checklist*🚗
+📸 Job Card & Cover Checklist: ${val_Job Card & Cover Checklist}
+⛔ Fatigue Warning : ${cab_fatigue}
+⚡ Power Supply : ${cab_power}
+💧 Common Rail Pressure (ON) : ${cab_crpress}
+🎚 Power Window : ${cab_window}
+
 
 *Tyre condition :*
 Tyre : ${tyre}
