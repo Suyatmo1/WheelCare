@@ -113,12 +113,6 @@
     <div class="item">RR: <input type="text" id="sus_rr" placeholder="contoh: 2.09 MPa" class="opt"></div>
   </div>
 
-  <label>Tyre Condition:</label>
-  <input type="text" id="tyre" placeholder="Good / Worn / dll">
-
-  <label>Deviation:</label>
-  <textarea id="deviation" rows="3"></textarea>
-
   <!-- Validasi & Kelengkapan Checliat Service-->
   <div class="section">
     <label>📝 Validasi & Kelengkapan Checklist Service</label>
@@ -132,6 +126,12 @@
       <select id="cab_fatigue" class="opt"><option>✅</option><option>❌</option></select>
     </div>
     
+
+  <label>Tyre Condition:</label>
+  <input type="text" id="tyre" placeholder="Good / Worn / dll">
+
+  <label>Deviation:</label>
+  <textarea id="deviation" rows="3"></textarea>
   </div>
 
   <div class="actions"
