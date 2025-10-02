@@ -18,8 +18,8 @@
       font-weight: bold; 
       cursor: pointer; 
     }
-    .wa { background: green; color: white; }
-    .copy { background: #444; color: white; }
+    .wa { background: #444; color: white; }
+    .copy { background: green; color: white; }
     #preview { 
       white-space: pre-wrap; 
       background: #1c1c1c; 
