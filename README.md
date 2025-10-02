@@ -1,5 +1,5 @@
 # WheelCare
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -24,8 +24,6 @@
       margin-bottom: 15px;
     }
     label {
-      display: block;
-      margin: 8px 0 4px;
       font-weight: bold;
       color: #333;
     }
@@ -37,13 +35,27 @@
       margin-bottom: 12px;
     }
     .checkbox-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px;
       margin-bottom: 12px;
     }
-    .checkbox-group label {
+    .checkbox-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 6px 10px;
+    }
+    .checkbox-item label {
       font-weight: normal;
+      flex: 1;
+    }
+    .checkbox-item input {
+      transform: scale(1.2);
+      margin-left: 8px;
     }
     button {
       padding: 12px;
@@ -91,24 +103,24 @@
 
     <h3>🩸 Oil Level</h3>
     <div class="checkbox-group">
-      <label>Engine oil <input type="checkbox" id="engineOil"></label>
-      <label>Transmission oil <input type="checkbox" id="transOil"></label>
-      <label>Hydraulic oil <input type="checkbox" id="hydOil"></label>
+      <div class="checkbox-item"><label>Engine oil</label><input type="checkbox" id="engineOil"></div>
+      <div class="checkbox-item"><label>Transmission oil</label><input type="checkbox" id="transOil"></div>
+      <div class="checkbox-item"><label>Hydraulic oil</label><input type="checkbox" id="hydOil"></div>
     </div>
 
     <h3>⚙ Engine Area</h3>
     <div class="checkbox-group">
-      <label>Belt tension <input type="checkbox" id="belt"></label>
-      <label>Oil leakage <input type="checkbox" id="oilLeak"></label>
-      <label>Common Rail Connector <input type="checkbox" id="crc"></label>
-      <label>Injector Tube <input type="checkbox" id="injector"></label>
+      <div class="checkbox-item"><label>Belt tension</label><input type="checkbox" id="belt"></div>
+      <div class="checkbox-item"><label>Oil leakage</label><input type="checkbox" id="oilLeak"></div>
+      <div class="checkbox-item"><label>Common Rail Connector</label><input type="checkbox" id="crc"></div>
+      <div class="checkbox-item"><label>Injector Tube</label><input type="checkbox" id="injector"></div>
     </div>
 
     <h3>🚗 Cabin Area</h3>
     <div class="checkbox-group">
-      <label>FM Radio <input type="checkbox" id="radio"></label>
-      <label>Fatigue Warning <input type="checkbox" id="fatigue"></label>
-      <label>Power Window <input type="checkbox" id="pw"></label>
+      <div class="checkbox-item"><label>FM Radio</label><input type="checkbox" id="radio"></div>
+      <div class="checkbox-item"><label>Fatigue Warning</label><input type="checkbox" id="fatigue"></div>
+      <div class="checkbox-item"><label>Power Window</label><input type="checkbox" id="pw"></div>
     </div>
     <label>⚡ Power Supply</label>
     <input type="text" id="powerSupply" placeholder="contoh: 27.7 V">
@@ -117,8 +129,8 @@
 
     <h3>🚗 Frame Area</h3>
     <div class="checkbox-group">
-      <label>Operator seat <input type="checkbox" id="seat"></label>
-      <label>Hand Rail <input type="checkbox" id="rail"></label>
+      <div class="checkbox-item"><label>Operator seat</label><input type="checkbox" id="seat"></div>
+      <div class="checkbox-item"><label>Hand Rail</label><input type="checkbox" id="rail"></div>
     </div>
 
     <h3>💧 Pressure Suspension (Panel)</h3>
@@ -129,18 +141,18 @@
 
     <h3>📝 Validasi & Kelengkapan Service</h3>
     <div class="checkbox-group">
-      <label>Job Card & Cover Checklist <input type="checkbox" id="jobCard"></label>
-      <label>Form Observasi Redo PS <input type="checkbox" id="redo"></label>
-      <label>Form QA 1 & QA 7 <input type="checkbox" id="qaForm"></label>
-      <label>Form PPM <input type="checkbox" id="ppm"></label>
-      <label>Checklist A <input type="checkbox" id="a"></label>
-      <label>Checklist B <input type="checkbox" id="b"></label>
-      <label>Checklist C <input type="checkbox" id="c"></label>
-      <label>Backlog <input type="checkbox" id="backlog"></label>
-      <label>FUI <input type="checkbox" id="fui"></label>
-      <label>Repair Order <input type="checkbox" id="ro"></label>
-      <label>Combine Maintenance <input type="checkbox" id="combine"></label>
-      <label>Service Activity Report <input type="checkbox" id="sar"></label>
+      <div class="checkbox-item"><label>Job Card & Cover Checklist</label><input type="checkbox" id="jobCard"></div>
+      <div class="checkbox-item"><label>Form Observasi Redo PS</label><input type="checkbox" id="redo"></div>
+      <div class="checkbox-item"><label>Form QA 1 & QA 7</label><input type="checkbox" id="qaForm"></div>
+      <div class="checkbox-item"><label>Form PPM</label><input type="checkbox" id="ppm"></div>
+      <div class="checkbox-item"><label>Checklist A</label><input type="checkbox" id="a"></div>
+      <div class="checkbox-item"><label>Checklist B</label><input type="checkbox" id="b"></div>
+      <div class="checkbox-item"><label>Checklist C</label><input type="checkbox" id="c"></div>
+      <div class="checkbox-item"><label>Backlog</label><input type="checkbox" id="backlog"></div>
+      <div class="checkbox-item"><label>FUI</label><input type="checkbox" id="fui"></div>
+      <div class="checkbox-item"><label>Repair Order</label><input type="checkbox" id="ro"></div>
+      <div class="checkbox-item"><label>Combine Maintenance</label><input type="checkbox" id="combine"></div>
+      <div class="checkbox-item"><label>Service Activity Report</label><input type="checkbox" id="sar"></div>
     </div>
 
     <label>*Tyre Condition*</label>
