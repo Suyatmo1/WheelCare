@@ -18,8 +18,8 @@
       font-weight: bold; 
       cursor: pointer; 
     }
-    .wa { background: #444; color: white; }
-    .copy { background: green; color: white; }
+    .wa { background: green; color: white; }
+    .copy { background: #444; color: white; }
     #preview { 
       white-space: pre-wrap; 
       background: #1c1c1c; 
@@ -37,8 +37,8 @@
 
   <label>Pilih Jenis Inspection:</label>
   <select id="jenisQA">
-    <option value="QA-1 Pre Inspection">QA-1 Pre Inspection</option>
-    <option value="QA-7 Final Inspection">QA-7 Final Inspection</option>
+    <option value="QA-1">QA-1 Pre Inspection</option>
+    <option value="QA-7">QA-7 Final Inspection</option>
   </select>
 
   <label>Code Number:</label>
@@ -87,8 +87,9 @@
       let tyre = document.getElementById("tyre").value;
       let deviation = document.getElementById("deviation").value;
 
-      pesan =
-`*${jenisQA}*
+      if (jenisQA === "QA-1") {
+        pesan =
+`*QA-1 Pre Inspection*
 
 📅 Tgl : ${date}
 👷 Mekanik : ${mekanik}
@@ -111,6 +112,50 @@ Injector Tube : ✅
 
 *Deviation :*
 ${deviation}`;
+      } else if (jenisQA === "QA-7") {
+        pesan =
+`*QA-7 Final Inspection*
+
+📅 Tgl : ${date}
+👷 Mekanik : ${mekanik}
+
+🚗 CN : ${codeNumber}
+⌛ HM : ${hourMeter}
+
+🩸 *Oil Level* 🩸
+Engine oil level : ✅
+Transmission oil level : ✅
+Hydraulic oil level : ✅
+
+⚙ *Engine Area* ⚙
+Belt tension : ✅
+Engine oil leakage : ✅
+Common Rail Connector : ✅
+Injector Tube : ✅
+
+🚗 *Cabin Area*🚗
+📸 FM Radio : ✅
+⛔ Fatigue Warning : ✅
+⚡ Power Supply : --
+💧 Common Rail Pressure (ON) : --
+🎚 Power Window : ✅
+
+🚗 *Frame Area* 🚗
+Operator seat : ✅
+Hand Rail : ✅
+
+💧 *Pressure Suspension (Panel)* 💧
+FL : -- MPa
+FR : -- MPa
+RL : -- MPa
+RR : -- MPa
+
+*Tyre condition :*
+Tyre : ${tyre}
+
+*Deviation :*
+${deviation}`;
+      }
 
       document.getElementById("preview").innerText = pesan;
     }
