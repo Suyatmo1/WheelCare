@@ -33,7 +33,13 @@
   </style>
 </head>
 <body>
-  <h2>Inspection Report HD</h2>
+  <h2>Inspection Report HD785-7</h2>
+
+  <label>Pilih Jenis Inspection:</label>
+  <select id="jenisQA">
+    <option value="QA-1 Pre Inspection">QA-1 Pre Inspection</option>
+    <option value="QA-7 Final Inspection">QA-7 Final Inspection</option>
+  </select>
 
   <label>Code Number:</label>
   <input type="text" id="codeNumber">
@@ -73,6 +79,7 @@
   <script>
     let pesan = "";
     function previewReport() {
+      let jenisQA = document.getElementById("jenisQA").value;
       let codeNumber = document.getElementById("codeNumber").value;
       let date = document.getElementById("date").value;
       let hourMeter = document.getElementById("hourMeter").value;
@@ -81,7 +88,7 @@
       let deviation = document.getElementById("deviation").value;
 
       pesan =
-`*QA-1 Pre Inspection*
+`*${jenisQA}*
 
 📅 Tgl : ${date}
 👷 Mekanik : ${mekanik}
