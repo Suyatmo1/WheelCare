@@ -214,7 +214,7 @@ function generateText(){
   `*Tyre condition :*\nTyre : ${document.getElementById('tyre').value}\n\n` +
   `*Deviation :*\n${document.getElementById('deviation').value}`;
   
-  document.getElementById("output").innerText = text;
+  document.getElementById("⚠️output").innerText = text;
   return text;
 }
 
