@@ -212,9 +212,9 @@ function generateText(){
   `- Form Combine Maintenance ${getCheck('combine')}\n` +
   `- Form Service Activity Report ${getCheck('sar')}\n\n` +
   `*Tyre condition :*\nTyre : ${document.getElementById('tyre').value}\n\n` +
-  `*Deviation :*\n${document.getElementById('deviation').value}`;
+  `*Deviation :*\n${document.getElementById('⚠️deviation').value}`;
   
-  document.getElementById("⚠️output").innerText = text;
+  document.getElementById("output").innerText = text;
   return text;
 }
 
