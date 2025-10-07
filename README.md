@@ -217,7 +217,11 @@ function generateText(){
   document.getElementById("output").innerText = text;
   return text;
 }
-
+function formatDeviation(text) {
+  const lines = text.split('\n').filter(l => l.trim() !== '');
+  if (lines.length === 0) return '';
+  return '*Deviation :*\n' + lines.map(l => `⚠️ ${l.trim()}`).join('\n');
+}
 function sendWA(){
   let text = generateText();
   let url = "https://wa.me/?text=" + encodeURIComponent(text);
