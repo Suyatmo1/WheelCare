@@ -217,6 +217,9 @@ function generateText(){
   document.getElementById("output").innerText = text;
   return text;
 }
+  <label>⚠️ Deviation</label>
+    <textarea id="deviation" placeholder="Ketik setiap temuan lalu tekan Enter..."></textarea>
+
 function formatDeviation(text) {
   const lines = text.split('\n').filter(l => l.trim() !== '');
   if (lines.length === 0) return '';
